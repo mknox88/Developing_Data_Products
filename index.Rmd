@@ -1,0 +1,77 @@
+---
+title       : Stopping Distance Prediction
+subtitle    : Application Pitch
+author      : Mark Knox
+job         : Developing Data Products Course Project
+framework   : revealjs      # {io2012, html5slides, shower, dzslides, ...}
+revealjs    : {theme: solarized, transition: cube}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.height=4, fig.width=6,
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+<br><br>
+## Stopping Distance Prediction
+### Application Pitch
+<br><br><br>
+Mark Knox   
+Developing Data Products Course Project
+
+--- .class #id
+
+## Application Overview
+<br>
+* Predicts stopping distance based on speed of travel
+    + Uses *cars* data set from RStudio
+    + Stopping distance is predicted based on linear model
+* Application built using shiny library
+* Application has 3 tabs:
+    + **Main** is where all the work is done
+    + **Help** contains overview & usage instructions
+    + **Source Code** contains *ui.R* and *server.R* code
+
+--- .class #id 
+
+## Application Need
+<br>
+* Stopping distance is often underestimated by new drivers
+* Stopping distance is dependent on speed of travel
+* Many accidents could be prevented if new drivers used this application
+    + But not while they are driving
+        * because that would be bad...
+
+---
+
+## Application Instructions
+<br>
+
+1. Select Speed of Car using slider control on **Main** tab
+    + Range: 5 - 200 mph (over 200 mph is just crazy)
+2. Click **Predict** button
+3. Predicted Stopping Distance (ft) will be shown
+    + Including a plot with the predicted data
+
+---
+
+## Application Example
+<br>
+
+* Selecting 35 mph for Speed of Car
+* Will tell you the predicted stopping distance is:
+```{r}
+data(cars)
+lm_cars <- lm(dist ~ speed, data=cars)
+
+stopping_distance <- function(speed_in) {
+    new <- data.frame(speed = speed_in)
+    paste(round(predict(lm_cars, new), 0), "ft")
+}
+
+stopping_distance(35)
+```
