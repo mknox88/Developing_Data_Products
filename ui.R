@@ -28,7 +28,6 @@ shinyUI(navbarPage(
                 verbatimTextOutput("inputValue"),
                 h4('Which resulted in a predicted stopping distance of:'),
                 verbatimTextOutput("prediction"),
-                br(),
                 plotOutput('myPlot')
             )
         )
