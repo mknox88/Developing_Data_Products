@@ -11,9 +11,9 @@ output: html_document
 This application uses a linear model based on the '*cars*' data set included with RStudio to predict stopping distance based on speed of car at time of braking.
 
 ### Instructions
-1. Select Speed of Car (mph) using slider control on the '**Main**' tab
-2. Click '**Predict**' button
-3. Predicted Stopping Distance (ft) will be shown
+1. Select Speed of Car (mph) using slider control on the **Main** tab
+2. Click **Predict** button
+3. Predicted Stopping Distance (ft) will be shown along with a supporting data plot
 
 ### Data
 The '*cars*' data set included in RStudio consists of 50 observations of speed of cars and the distances taken to stop.  The data were recorded in the 1920s.

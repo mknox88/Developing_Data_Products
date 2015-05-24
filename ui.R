@@ -14,7 +14,7 @@ shinyUI(navbarPage(
                 width=5,
                 h4('Select speed of car and click Predict'),
                 br(),
-                sliderInput('speed', 'Speed of Car (mph):', value=50, min=5, max=200, step=5),
+                sliderInput('speed', 'Speed of Car (mph):', value=35, min=5, max=200, step=5),
                 fluidRow(
                     column(width=4, ""),
                     column(width=8, submitButton('Predict'))
@@ -27,7 +27,9 @@ shinyUI(navbarPage(
                 h4('You entered a speed of:'),
                 verbatimTextOutput("inputValue"),
                 h4('Which resulted in a predicted stopping distance of:'),
-                verbatimTextOutput("prediction")
+                verbatimTextOutput("prediction"),
+                br(),
+                plotOutput('myPlot')
             )
         )
     ),
