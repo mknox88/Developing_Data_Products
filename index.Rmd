@@ -61,17 +61,31 @@ Developing Data Products Course Project
 
 ## Application Example
 <br>
-
-* Selecting 35 mph for Speed of Car
-* Will tell you the predicted stopping distance is:
-```{r}
+```{r echo=FALSE}
 data(cars)
 lm_cars <- lm(dist ~ speed, data=cars)
 
 stopping_distance <- function(speed_in) {
-    new <- data.frame(speed = speed_in)
-    paste(round(predict(lm_cars, new), 0), "ft")
+    df_speed <- data.frame(speed = speed_in)
+    round(predict(lm_cars, df_speed), 0)
 }
 
-stopping_distance(35)
+input_speed <- 35
+pred_dist <- stopping_distance(input_speed)
+```
+* Selecting **`r input_speed`** mph for Speed of Car
+* Will tell you the predicted stopping distance is: **`r paste(pred_dist, "ft")`**
+* And display a pretty(?) plot of the predicted data
+```{r echo=FALSE}
+plot(x=cars$speed, y=cars$dist, col="black",
+     main="Stopping Distance",
+     xlab="Speed (mph)",
+     ylab="Distance (ft)",
+     xlim=c(0, max(max(cars$speed), input_speed)),
+     ylim=c(0, max(max(cars$dist), pred_dist))
+)
+abline(lm_cars, col="red", lwd=3)
+points(x=input_speed, y=pred_dist, pch=3, col="blue", lwd=4)
+lines(x=c(input_speed, input_speed), y=c(0, pred_dist), col="gray60", lty=2)
+lines(x=c(0, input_speed), y=c(pred_dist, pred_dist), col="gray60", lty=2)
 ```
