@@ -13,6 +13,7 @@ shinyServer(
         output$myPlot <- renderPlot({
             pred_dist <- stopping_distance(input$speed)
             plot(x=cars$speed, y=cars$dist, col="black",
+                 main="Stopping Distance",
                  xlab="Speed (mph)",
                  ylab="Distance (ft)",
                  xlim=c(0, max(max(cars$speed), input$speed)),
